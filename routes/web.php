@@ -10,11 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('signup', 'UserController');
-
-Route::get('/login', function () {
-    return view('login');
-});
 Route::get('/', function () {
-    return view('cv/create');
+    return view('welcome');
 });
+
+Route::resource('users', 'UserController')->only(['update']);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+

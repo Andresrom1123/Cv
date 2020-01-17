@@ -24,10 +24,12 @@ class StoreUser extends FormRequest
     public function rules()
     {
         return [
+            'profile_picture' => 'required',
             'name' => 'required',
             'last_name' => 'required',
-            'email' => 'required|unique:App\User,email',
-            'password' => 'required'
+            'state_id' => 'required',
+            'postal_code' => 'required|numeric',
+            'cellphone_number' => 'required|numeric'
         ];
     }
 }

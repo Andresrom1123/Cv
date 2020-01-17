@@ -16,8 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
-        return view('signup.index', compact('user'));
+        //
     }
 
     /**
@@ -27,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('signup.create');
+        //
     }
 
     /**
@@ -38,23 +37,7 @@ class UserController extends Controller
      */
     public function store(StoreUser $request)
     {
-        // $user = new User($request->all());
-        // return User::create([
-        //     'name' => $user['name'],
-        //     'last_name' => $user['last_name'],
-        //     'email' => $user['email'],
-        //     'password' => Hash::make($user['password']),
-        // ]);
-
-        $user = new User();
-        $user->name = $request->name;
-        $user->last_name = $request->last_name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-
-        $user->save();
-
-        return redirect('/login');
+        //
     }
 
     /**
@@ -86,9 +69,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUser $request, $id)
     {
-        //
+        $user = User::find($id)->update($request->all());
+
+        return redirect()->back();
     }
 
     /**
